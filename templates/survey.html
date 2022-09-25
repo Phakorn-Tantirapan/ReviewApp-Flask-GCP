@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}-test{% endblock %}
+{% block page_content %}
+<div class="page-header">
+    <h1>satisfy: {% if satisfy_score %} {{ satisfy_score }} {% else %} xxxxx {% endif %}</h1>
+    <h1>fast: {% if fast_score %} {{ fast_score }} {% else %} YYYY {% endif %}</h1>
+    <h1>comment: {% if comment_text %} {{ comment_text }} {% else %} YYYY {% endif %}</h1>
+</div>
+{% endblock %}

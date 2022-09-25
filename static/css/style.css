@@ -1,0 +1,118 @@
+body {
+    font-family: "Prompt", "Trirong", "Kanit", sans-serif;
+    margin: 15px;
+    text-align: center;
+}
+
+h1{
+    text-align: center;
+}
+
+h4, p {
+    margin-left: 5px;
+}
+
+/* use display:inline-flex to prevent whitespace issues. alternatively, you can put all the children of .rating-group on a single line */
+.rating-group {
+    display: inline-flex;
+}
+
+/* make hover effect work properly in IE */
+.rating__icon {
+    pointer-events: none;
+}
+
+/* hide radio inputs */
+.rating__input,
+.form-btn{
+    position: absolute !important;
+    left: -9999px !important;
+}
+
+/* hide 'none' input from screenreaders */
+.rating__input--none {
+    display: none
+}
+
+/* set icon padding and size */
+.rating__label {
+    cursor: pointer;
+    padding: 0 0.1em;
+    font-size: 2rem;
+}
+
+/* set default star color */
+.rating__icon--star {
+    color: orange;
+}
+
+/* if any input is checked, make its following siblings grey */
+.rating__input:checked ~ .rating__label .rating__icon--star {
+    color: #ddd;
+}
+
+/* make all stars orange on rating group hover */
+.rating-group:hover .rating__label .rating__icon--star {
+    color: orange;
+}
+
+/* make hovered input's following siblings grey on hover */
+.rating__input:hover ~ .rating__label .rating__icon--star {
+    color: #ddd;
+}
+
+.form-btn:checked ~ .repeat-btn {
+    color: #1A1A1A;
+}
+
+/* bootstrap start here */
+
+.inactive-btn + label {
+    color: #50514F !important;
+    background-color: #D9D9D9 !important;
+    border: None !important;
+}
+
+.green-btn:hover + label, 
+.green-btn:visited + label, 
+.green-btn:checked + label, 
+.green-btn:active + label{
+    color: #FFF !important;
+    background-color: #70C1B3 !important;
+    box-shadow: none !important;
+    border-radius: None !important;
+}
+
+.red-btn:hover + label, 
+.red-btn:visited + label, 
+.red-btn:checked + label, 
+.red-btn:active + label{
+    color: #FFF !important;
+    background-color: #F25F5C !important;
+    box-shadow: none !important;
+    border-radius: None !important;
+}
+
+.yellow-btn:hover + label, 
+.yellow-btn:visited + label, 
+.yellow-btn:checked + label, 
+.yellow-btn:active + label{
+    color: #FFF !important;
+    background-color: #FFC008 !important;
+    box-shadow: none !important;
+    border-radius: None !important;
+}
+
+.submit-btn{
+    color: #FFF !important;
+    background-color: #247BA0 !important;
+    border: None !important;
+}
+
+.done{
+    color: #247BA0;
+}
+
+.body-bg{
+    background-color: #247BA0;
+}
