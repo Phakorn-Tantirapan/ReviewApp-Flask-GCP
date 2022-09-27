@@ -9,14 +9,29 @@
     <link rel="stylesheet" href="static/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+        </symbol>
+    </svg>
 </head>
 <body onload="hidediv()">
+
     {% block page_content %}{% endblock %}
     <div class="container">
-        <div class="mt-5">
+        {% for message in get_flashed_messages() %}
+        <div class="alert alert-warning d-flex align-items-center" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+            <div>
+                {{message}}
+            </div>
+        </div>
+        {% endfor %}
+
+        <div class="mt-3">
             <h1>ความพึงพอใจในบริการซ่อมครั้งนี้</h1>
             <!-- <hr style="width:300px;text-align:center"> -->
-            <div class="position-relative my-5">
+            <div class="position-relative my-3">
                 <p class="text-end">วันที่เข้าซ่อม</p>
                 <p class="badge bg-warning position-absolute end-0">{% block date %}{% endblock %}</p>
             </div>
@@ -32,27 +47,27 @@
                 <form method="POST">
                     <div class="d-grid gap-3" >
                         <div class="overall">
-                            <h4>ความพึงพอใจโดยรวม(*)</h4>
+                            <h4>ความพึงพอใจโดยรวม (*)</h4>
                             <div class="full-stars">
                                 <div class="rating-group">
                                     <input disabled checked class="rating__input rating__input--none" name="rating_sat" id="rating_sat-none" value="0" type="radio">
                                     <label aria-label="1 star" class="rating__label" for="rating_sat-1"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                                    <input class="rating__input" name="rating_sat" id="rating_sat-1" value="1" type="radio" onclick="showdiv(this.value)" required />
+                                    <input class="rating__input" name="rating_sat" id="rating_sat-1" value="1" type="radio" onclick="showdiv(this.value)" required>
                                     <label aria-label="2 stars" class="rating__label" for="rating_sat-2"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                                    <input class="rating__input" name="rating_sat" id="rating_sat-2" value="2" type="radio" onclick="showdiv(this.value)" required />
+                                    <input class="rating__input" name="rating_sat" id="rating_sat-2" value="2" type="radio" onclick="showdiv(this.value)" required>
                                     <label aria-label="3 stars" class="rating__label" for="rating_sat-3"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                                    <input class="rating__input" name="rating_sat" id="rating_sat-3" value="3" type="radio"onclick="showdiv(this.value)" required />
+                                    <input class="rating__input" name="rating_sat" id="rating_sat-3" value="3" type="radio"onclick="showdiv(this.value)" required>
                                     <label aria-label="4 stars" class="rating__label" for="rating_sat-4"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                                    <input class="rating__input" name="rating_sat" id="rating_sat-4" value="4" type="radio" onclick="showdiv(this.value)" required />
+                                    <input class="rating__input" name="rating_sat" id="rating_sat-4" value="4" type="radio" onclick="showdiv(this.value)" required>
                                     <label aria-label="5 stars" class="rating__label" for="rating_sat-5"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                                    <input class="rating__input" name="rating_sat" id="rating_sat-5" value="5" type="radio" onclick="showdiv(this.value)" required />
+                                    <input class="rating__input" name="rating_sat" id="rating_sat-5" value="5" type="radio" onclick="showdiv(this.value)" required>
                                 </div>
                             </div>
                         </div>
                     
                         
                         <div id="most-love-1">
-                            <h4>ท่านไม่พอใจบริการด้านใดมากที่สุด(*)</h4>
+                            <h4>ท่านไม่พอใจบริการด้านใดมากที่สุด (*)</h4>
                             <div class="btn-group btn-group-toggle" data-bs-toggle="buttons">
                                 <input type="radio" class="btn-check inactive-btn red-btn" name="most-impress-1" id="most-love-1-fast" autocomplete="off" value="fast"> 
                                 <label class="btn btn-secondary m-2 rounded-2" for="most-love-1-fast">แก้ปัญหาช้า</label>
@@ -65,10 +80,10 @@
                             </div>
                         </div>
                         <div id="most-love-2">
-                            <h4>ท่านให้ความสำคัญบริการด้านใดมากที่สุด(*)</h4>
+                            <h4>ท่านให้ความสำคัญบริการด้านใดมากที่สุด (*)</h4>
                             <div class="btn-group btn-group-toggle" data-bs-toggle="buttons">
                                 <input type="radio" class="btn-check inactive-btn yellow-btn" name="most-impress-2" id="most-love-2-fast" autocomplete="off" value="fast"> 
-                                <label class="btn btn-secondary m-2 rounded-2" for="most-love-2-fast">แก้ปัญหาหาย</label>
+                                <label class="btn btn-secondary m-2 rounded-2" for="most-love-2-fast">ความรวดเร็วในการแก้ปัญหา</label>
                                 <input type="radio" class="btn-check inactive-btn yellow-btn" name="most-impress-2" id="most-love-2-expert" autocomplete="off" value="expert"> 
                                 <label class="btn btn-secondary m-2 rounded-2" for="most-love-2-expert">ความชำนาญของช่าง</label>
                                 <input type="radio" class="btn-check inactive-btn yellow-btn" name="most-impress-2" id="most-love-2-easy" autocomplete="off" value="easy"> 
@@ -93,20 +108,20 @@
                         <div class="still-happen">
                             <h4>การเกิดซ้ำ(*)</h4>
                             <div>
-                                <input type="radio" class="btn-check inactive-btn green-btn" name="repeat" id="not-repeat-btn" autocomplete="off" value="false">
+                                <input type="radio" class="btn-check inactive-btn green-btn" name="repeat" id="not-repeat-btn" autocomplete="off" value=0>
                                 <label class="btn m-2 rounded-2" for="not-repeat-btn">ไม่เกิดซ้ำ</label>
-                                <input type="radio" class="btn-check inactive-btn red-btn" name="repeat" id="repeat-btn" autocomplete="off" value="true">
+                                <input type="radio" class="btn-check inactive-btn red-btn" name="repeat" id="repeat-btn" autocomplete="off" value=1>
                                 <label class="btn m-2 rounded-2" for="repeat-btn">เกิดซ้ำ</label>
                             </div>
                         </div>
                     </div>
             </div>
-            <div class="text-start mr-3">
+            <div class="text-start mr-3 mt-3">
                 <h4 >ความคิดเห็นเพิ่มเติม</h4>
                 <textarea class="form-control" rows="5" name="comment" placeholder="โปรดให้ความคิดเห็นเพิ่มเติม.."></textarea><br>
             </div>
             <div class="submit">
-                <input type="submit" value="SUBMIT" class="btn btn-dark submit-btn mb-5">
+                <input type="submit" name="submit-button" value="SUBMIT" class="btn btn-dark submit-btn mb-5">
             </div>
         </form>
             

@@ -130,3 +130,9 @@ dmypy.json
 *.yaml
 
 .gcloudignore
+
+data_for_test.py
+
+connect_unix.py
+
+connect_tcp.py
